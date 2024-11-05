@@ -1,11 +1,10 @@
-The Earnings Transcript Summary API is a Flask-based web application designed to process PDF earnings transcripts. It extracts text from uploaded PDFs, preprocesses the content, and generates structured summaries categorized into:
+The Earnings Transcript Summary API is a Flask-based web application designed to process PDF earnings transcripts or json payload transcripts. The summaries are generated using Google's Generative AI model (gemini-1.5-flash). It extracts text from uploaded PDFs, preprocesses the content, and generates structured summaries categorized into:
 
 1. Financial Performance
 2. Market Dynamics
 3. Expansion Plans
 4. Environmental Risks
 5. Regulatory or Policy Changes
-* The summaries are generated using Google's Generative AI model (gemini-1.5-flash).
 
 # Features
 * PDF Upload: Users can upload PDF files containing earnings transcripts.
@@ -105,8 +104,8 @@ Description: Retrieves company name and transcript text from the session, genera
 
 ## POST '/earnings_transcript_summary'
 Description: Accepts a JSON payload containing company_name and transcript_text, generates summaries, and returns them as JSON.
-You can use the below URL with either curl or POSTMAN to access the resource with proper body.
-Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/earnings_transcript_summary
+**You can use the below URL with either curl or POSTMAN to access the resource with proper body.
+Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/earnings_transcript_summary**
 
 ### Request:
 * Method: POST
