@@ -28,7 +28,8 @@ Clone the Repository: git clone https://github.com/Wiz-2/QuizAI.git
 ### Create a Virtual Environment:
 
 * python3 -m venv venv
-* source venv/bin/activate  # On Windows: venv\Scripts\activate
+* On Linux: source venv/bin/activate
+* On Windows: venv\Scripts\activate
 
 ### Install Dependencies:
 
@@ -56,39 +57,39 @@ Activate the Virtual Environment:
 * Run the Flask App: python main.py
 
 # API Endpoints
-1. GET '/'
+## GET '/'
 Description: Renders an HTML form for users to upload a PDF file and enter the company name.
 Access URL on Replit: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/
 
-## Request:
+### Request:
 * Method: GET
 * URL: /
 
-## Response:
+### Response:
 * Status Code: 200 OK
 * Body: HTML form
 
-2. POST '/upload-pdf'
+## POST '/upload-pdf'
 Description: Handles PDF file uploads, extracts text, stores data in the session, and redirects to the /summary endpoint. It is automatically called when clicking on upload button, which would ultimately redirect to summary endpoint.
 
-## Request:
+### Request:
 * Method: POST
 * URL: /upload-pdf
 * Form Data: textInput (string): Name of the company. file (file): PDF file to upload.
 
-## Response:
+### Response:
 * Status Code: 302 Found (Redirect)
 * Body: Redirects to /summary
 * Errors: 400 Bad Request if file part is missing, no file is selected, or invalid file format.
 
-3. GET '/summary'
+## GET '/summary'
 Description: Retrieves company name and transcript text from the session, generates a summary, and returns it as JSON.
 
-## Request:
+### Request:
 * Method: GET
 * URL: /summary
 
-## Response:
+### Response:
 * Status Code: 200 OK
 * Body: JSON object containing summaries.
 * Example Response:
@@ -102,12 +103,12 @@ Description: Retrieves company name and transcript text from the session, genera
 }
 *Errors:400 Bad Request if required data is missing. 500 Internal Server Error if summary generation fails.
 
-4. POST '/earnings_transcript_summary'
+## POST '/earnings_transcript_summary'
 Description: Accepts a JSON payload containing company_name and transcript_text, generates summaries, and returns them as JSON.
 You can use the below URL with either curl or POSTMAN to access the resource with proper body.
 Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/earnings_transcript_summary
 
-## Request:
+### Request:
 * Method: POST
 * URL: /earnings_transcript_summary
 * Headers:Content-Type: application/json
@@ -115,7 +116,7 @@ Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.r
   "company_name": "Paytn",
   "transcript_text": "Your transcript text here..."}
 
-## Response:
+### Response:
 * Status Code: 200 OK
 * Body: JSON object containing summaries.
 * Example Response:{
@@ -129,35 +130,34 @@ Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.r
 * Errors: 400 Bad Request for invalid input formats or missing fields. 500 Internal Server Error if summary generation fails.
 
 # Functions
-1. extract_text_from_pdf(pdf_file)
+## extract_text_from_pdf(pdf_file)
 Description: Extracts text from an uploaded PDF file using PyMuPDF and preprocesses it.
 
-## Parameters: 
-pdf_file (FileStorage): The uploaded PDF file.
+### Parameters: 
+* pdf_file (FileStorage): The uploaded PDF file.
 
-## Returns:
-str: The extracted and preprocessed text from the PDF.
-Returns an empty string if extraction fails.
+### Returns:
+* str: The extracted and preprocessed text from the PDF. Returns an empty string if extraction fails.
 
-2. preprocess_text(text, max_tokens=20000)
+## preprocess_text(text, max_tokens=20000)
 Description: Preprocesses the input text by removing asterisks, cleaning whitespace, tokenizing, truncating to a maximum token limit, and decoding back to text.
 
-## Parameters:
+### Parameters:
 * text (str): The raw input text to preprocess.
 * max_tokens (int, optional): The maximum number of tokens allowed in the output. Defaults to 20000.
 
-## Returns:
+### Returns:
 * str: The preprocessed text.
 
-3. generate_summary(company_name, transcript_text, prompt_suffix="Provide the summaries for each category in the form of paragraphs")
+## generate_summary(company_name, transcript_text, prompt_suffix="Provide the summaries for each category in the form of paragraphs")
 Description:Generates a summarized structure from the provided transcript text using a Generative AI model.
 
-## Parameters:
+### Parameters:
 * company_name (str): Name of the company.
 * transcript_text (str): Transcript text to summarize.
 * prompt_suffix (str, optional): Additional instructions for the AI model. Defaults to "Provide the summaries for each category in the form of paragraphs".
 
-## Returns:
+### Returns:
 * dict: A dictionary containing the company name and summaries for each category.
 * Returns an error dictionary if summary generation fails.
 
