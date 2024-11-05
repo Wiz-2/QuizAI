@@ -60,38 +60,38 @@ Activate the Virtual Environment:
 Description: Renders an HTML form for users to upload a PDF file and enter the company name.
 Access URL on Replit: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/
 
-Request:
-*Method: GET
-*URL: /
+## Request:
+* Method: GET
+* URL: /
 
-Response:
-*Status Code: 200 OK
-*Body: HTML form
+## Response:
+* Status Code: 200 OK
+* Body: HTML form
 
 2. POST '/upload-pdf'
 Description: Handles PDF file uploads, extracts text, stores data in the session, and redirects to the /summary endpoint. It is automatically called when clicking on upload button, which would ultimately redirect to summary endpoint.
 
-Request:
-*Method: POST
-*URL: /upload-pdf
-*Form Data: textInput (string): Name of the company. file (file): PDF file to upload.
+## Request:
+* Method: POST
+* URL: /upload-pdf
+* Form Data: textInput (string): Name of the company. file (file): PDF file to upload.
 
-Response:
-*Status Code: 302 Found (Redirect)
-*Body: Redirects to /summary
-*Errors: 400 Bad Request if file part is missing, no file is selected, or invalid file format.
+## Response:
+* Status Code: 302 Found (Redirect)
+* Body: Redirects to /summary
+* Errors: 400 Bad Request if file part is missing, no file is selected, or invalid file format.
 
 3. GET '/summary'
 Description: Retrieves company name and transcript text from the session, generates a summary, and returns it as JSON.
 
-Request:
+## Request:
 * Method: GET
-*URL: /summary
+* URL: /summary
 
-Response:
-*Status Code: 200 OK
-*Body: JSON object containing summaries.
-*Example Response:
+## Response:
+* Status Code: 200 OK
+* Body: JSON object containing summaries.
+* Example Response:
 {
     "company_name": "Paytm",
     "environmental_risks": "The text does not contain any information on environmental issues, sustainability, or ESG concerns.",
@@ -107,18 +107,18 @@ Description: Accepts a JSON payload containing company_name and transcript_text,
 You can use the below URL with either curl or POSTMAN to access the resource with proper body.
 Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/earnings_transcript_summary
 
-Request:
-*Method: POST
-*URL: /earnings_transcript_summary
-*Headers:Content-Type: application/json
-*Body:{
+## Request:
+* Method: POST
+* URL: /earnings_transcript_summary
+* Headers:Content-Type: application/json
+* Body:{
   "company_name": "Paytn",
   "transcript_text": "Your transcript text here..."}
 
-Response:
-*Status Code: 200 OK
-*Body: JSON object containing summaries.
-*Example Response:{
+## Response:
+* Status Code: 200 OK
+* Body: JSON object containing summaries.
+* Example Response:{
     "company_name": "Paytm",
     "environmental_risks": "The text does not contain any information on environmental issues, sustainability, or ESG concerns.",
     "expansion_plans": "Paytm is focused on increasing the monetization of its soundboxes through increased subscription revenues and reactivation efforts. The company is also looking to expand its financial services offerings, with secured loan products expected to contribute meaningfully in the coming quarters. The company is awaiting regulatory approvals to expand its UPI customer base and is committed to investing in its payments business, both for consumer and merchant segments.",
@@ -132,44 +132,43 @@ Response:
 1. extract_text_from_pdf(pdf_file)
 Description: Extracts text from an uploaded PDF file using PyMuPDF and preprocesses it.
 
-*Parameters: pdf_file (FileStorage): The uploaded PDF file.
+## Parameters: 
+pdf_file (FileStorage): The uploaded PDF file.
 
-*Returns:
+## Returns:
 str: The extracted and preprocessed text from the PDF.
 Returns an empty string if extraction fails.
 
 2. preprocess_text(text, max_tokens=20000)
 Description: Preprocesses the input text by removing asterisks, cleaning whitespace, tokenizing, truncating to a maximum token limit, and decoding back to text.
 
-*Parameters:
-text (str): The raw input text to preprocess.
-max_tokens (int, optional): The maximum number of tokens allowed in the output. Defaults to 20000.
+## Parameters:
+* text (str): The raw input text to preprocess.
+* max_tokens (int, optional): The maximum number of tokens allowed in the output. Defaults to 20000.
 
-*Returns:
-str: The preprocessed text.
+## Returns:
+* str: The preprocessed text.
 
 3. generate_summary(company_name, transcript_text, prompt_suffix="Provide the summaries for each category in the form of paragraphs")
 Description:Generates a summarized structure from the provided transcript text using a Generative AI model.
 
-* Parameters:
-company_name (str): Name of the company.
-transcript_text (str): Transcript text to summarize.
-prompt_suffix (str, optional): Additional instructions for the AI model. Defaults to "Provide the summaries for each category in the form of paragraphs".
+## Parameters:
+* company_name (str): Name of the company.
+* transcript_text (str): Transcript text to summarize.
+* prompt_suffix (str, optional): Additional instructions for the AI model. Defaults to "Provide the summaries for each category in the form of paragraphs".
 
-* Returns:
-dict: A dictionary containing the company name and summaries for each category.
-Returns an error dictionary if summary generation fails.
-Usage:
+## Returns:
+* dict: A dictionary containing the company name and summaries for each category.
+* Returns an error dictionary if summary generation fails.
 
 # Error Handling
 The API provides clear error messages with appropriate HTTP status codes:
 
-400 Bad Request:
-
+## 400 Bad Request:
 Missing or invalid input fields.
 Invalid input format.
 Transcript text exceeding token limits.
-500 Internal Server Error:
+## 500 Internal Server Error:
 
 Failures in summary generation.
 Unexpected server-side errors.
