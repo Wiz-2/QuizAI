@@ -61,41 +61,37 @@ Description: Renders an HTML form for users to upload a PDF file and enter the c
 Access URL on Replit: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/
 
 Request:
-Method: GET
-URL: /
+*Method: GET
+*URL: /
 
 Response:
-Status Code: 200 OK
-Body: HTML form
-Example: Visit http://localhost:5000/ in your browser to access the upload form.
+*Status Code: 200 OK
+*Body: HTML form
 
 2. POST '/upload-pdf'
 Description: Handles PDF file uploads, extracts text, stores data in the session, and redirects to the /summary endpoint. It is automatically called when clicking on upload button, which would ultimately redirect to summary endpoint.
 
 Request:
-Method: POST
-URL: /upload-pdf
-Form Data:
-textInput (string): Name of the company.
-file (file): PDF file to upload.
+*Method: POST
+*URL: /upload-pdf
+*Form Data: textInput (string): Name of the company. file (file): PDF file to upload.
 
 Response:
-Status Code: 302 Found (Redirect)
-Body: Redirects to /summary
-Errors:
-400 Bad Request if file part is missing, no file is selected, or invalid file format.
+*Status Code: 302 Found (Redirect)
+*Body: Redirects to /summary
+*Errors: 400 Bad Request if file part is missing, no file is selected, or invalid file format.
 
 3. GET '/summary'
 Description: Retrieves company name and transcript text from the session, generates a summary, and returns it as JSON.
 
 Request:
-Method: GET
-URL: /summary
+* Method: GET
+*URL: /summary
 
 Response:
-Status Code: 200 OK
-Body: JSON object containing summaries.
-Example Response:
+*Status Code: 200 OK
+*Body: JSON object containing summaries.
+*Example Response:
 {
     "company_name": "Paytm",
     "environmental_risks": "The text does not contain any information on environmental issues, sustainability, or ESG concerns.",
@@ -104,9 +100,7 @@ Example Response:
     "market_dynamics": "Paytm highlighted the increasing adoption of DLG models in the lending market, driven by regulatory and market practices. This model, while not preferred by all lending partners, has positively impacted the company's ability to secure increased capital for loan disbursement. The company sees a significant opportunity to expand its personal loan distribution business by adding new lending partners and increasing penetration in the market, particularly in tier 2 and 3 cities.",
     "regulatory_or_policy_changes": "Paytm is awaiting regulatory approvals from NPCI to onboard new customers for its UPI platform. The company is also awaiting clarity from the RBI on its payments bank operations. The company is in compliance with all relevant regulatory requirements for its lending business, particularly concerning DLG models and their impact on credit loss coverage."
 }
-Errors:
-400 Bad Request if required data is missing.
-500 Internal Server Error if summary generation fails.
+*Errors:400 Bad Request if required data is missing. 500 Internal Server Error if summary generation fails.
 
 4. POST '/earnings_transcript_summary'
 Description: Accepts a JSON payload containing company_name and transcript_text, generates summaries, and returns them as JSON.
@@ -114,22 +108,17 @@ You can use the below URL with either curl or POSTMAN to access the resource wit
 Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/earnings_transcript_summary
 
 Request:
-
-Method: POST
-URL: /earnings_transcript_summary
-Headers:
-Content-Type: application/json
-Body:
-{
+*Method: POST
+*URL: /earnings_transcript_summary
+*Headers:Content-Type: application/json
+*Body:{
   "company_name": "Paytn",
-  "transcript_text": "Your transcript text here..."
-}
+  "transcript_text": "Your transcript text here..."}
 
 Response:
-Status Code: 200 OK
-Body: JSON object containing summaries.
-Example Response:
-{
+*Status Code: 200 OK
+*Body: JSON object containing summaries.
+*Example Response:{
     "company_name": "Paytm",
     "environmental_risks": "The text does not contain any information on environmental issues, sustainability, or ESG concerns.",
     "expansion_plans": "Paytm is focused on increasing the monetization of its soundboxes through increased subscription revenues and reactivation efforts. The company is also looking to expand its financial services offerings, with secured loan products expected to contribute meaningfully in the coming quarters. The company is awaiting regulatory approvals to expand its UPI customer base and is committed to investing in its payments business, both for consumer and merchant segments.",
@@ -137,39 +126,37 @@ Example Response:
     "market_dynamics": "Paytm highlighted the increasing adoption of DLG models in the lending market, driven by regulatory and market practices. This model, while not preferred by all lending partners, has positively impacted the company's ability to secure increased capital for loan disbursement. The company sees a significant opportunity to expand its personal loan distribution business by adding new lending partners and increasing penetration in the market, particularly in tier 2 and 3 cities.",
     "regulatory_or_policy_changes": "Paytm is awaiting regulatory approvals from NPCI to onboard new customers for its UPI platform. The company is also awaiting clarity from the RBI on its payments bank operations. The company is in compliance with all relevant regulatory requirements for its lending business, particularly concerning DLG models and their impact on credit loss coverage."
 }
-Errors:
-400 Bad Request for invalid input formats or missing fields.
-500 Internal Server Error if summary generation fails.
+* Errors: 400 Bad Request for invalid input formats or missing fields. 500 Internal Server Error if summary generation fails.
 
 # Functions
 1. extract_text_from_pdf(pdf_file)
 Description: Extracts text from an uploaded PDF file using PyMuPDF and preprocesses it.
 
-Parameters:
-pdf_file (FileStorage): The uploaded PDF file.
-Returns:
+*Parameters: pdf_file (FileStorage): The uploaded PDF file.
+
+*Returns:
 str: The extracted and preprocessed text from the PDF.
 Returns an empty string if extraction fails.
 
 2. preprocess_text(text, max_tokens=20000)
 Description: Preprocesses the input text by removing asterisks, cleaning whitespace, tokenizing, truncating to a maximum token limit, and decoding back to text.
 
-Parameters:
+*Parameters:
 text (str): The raw input text to preprocess.
 max_tokens (int, optional): The maximum number of tokens allowed in the output. Defaults to 20000.
 
-Returns:
+*Returns:
 str: The preprocessed text.
 
-generate_summary(company_name, transcript_text, prompt_suffix="Provide the summaries for each category in the form of paragraphs")
+3. generate_summary(company_name, transcript_text, prompt_suffix="Provide the summaries for each category in the form of paragraphs")
 Description:Generates a summarized structure from the provided transcript text using a Generative AI model.
 
-Parameters:
+* Parameters:
 company_name (str): Name of the company.
 transcript_text (str): Transcript text to summarize.
 prompt_suffix (str, optional): Additional instructions for the AI model. Defaults to "Provide the summaries for each category in the form of paragraphs".
 
-Returns:
+* Returns:
 dict: A dictionary containing the company name and summaries for each category.
 Returns an error dictionary if summary generation fails.
 Usage:
