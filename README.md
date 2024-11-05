@@ -38,10 +38,6 @@ Clone the Repository: git clone https://github.com/Wiz-2/QuizAI.git
 
 * API_KEY: Your Google Generative AI API key.
 
-* On Replit: Click on the (Secrets) icon.
-Add the following keys:
-API_KEY:	your_google_api_key
-
 * Locally:
 Create a .env file in the project root:
 API_KEY=your_google_api_key
@@ -58,7 +54,7 @@ Activate the Virtual Environment:
 # API Endpoints
 ## GET '/'
 Description: Renders an HTML form for users to upload a PDF file and enter the company name.
-Access URL on Replit: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/
+Access URL: [https://quizai-ls9l.onrender.com/]
 
 ### Request:
 * Method: GET
@@ -105,7 +101,7 @@ Description: Retrieves company name and transcript text from the session, genera
 ## POST '/earnings_transcript_summary'
 Description: Accepts a JSON payload containing company_name and transcript_text, generates summaries, and returns them as JSON.
 **You can use the below URL with either curl or POSTMAN to access the resource with proper body.
-Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/earnings_transcript_summary**
+Access URL: [https://quizai-ls9l.onrender.com/earnings_transcript_summary]**
 
 ### Request:
 * Method: POST
