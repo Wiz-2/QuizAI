@@ -1,56 +1,48 @@
 The Earnings Transcript Summary API is a Flask-based web application designed to process PDF earnings transcripts. It extracts text from uploaded PDFs, preprocesses the content, and generates structured summaries categorized into:
 
-Financial Performance
-Market Dynamics
-Expansion Plans
-Environmental Risks
-Regulatory or Policy Changes
-The summaries are generated using Google's Generative AI model (gemini-1.5-flash).
+1. Financial Performance
+2. Market Dynamics
+3. Expansion Plans
+4. Environmental Risks
+5. Regulatory or Policy Changes
+* The summaries are generated using Google's Generative AI model (gemini-1.5-flash).
 
-Features
-PDF Upload: Users can upload PDF files containing earnings transcripts.
-Text Extraction: Extracts text from uploaded PDFs using PyMuPDF (fitz).
-Preprocessing: Cleans and tokenizes text, removing unwanted characters and limiting token count.
-Summarization: Generates structured summaries across predefined categories using a Generative AI model.
-API Endpoint: Provides a POST endpoint to accept JSON payloads for transcript summarization.
-Caching: Implements caching for improved performance on summary retrieval.
+# Features
+* PDF Upload: Users can upload PDF files containing earnings transcripts.
+* Text Extraction: Extracts text from uploaded PDFs using PyMuPDF (fitz).
+* Preprocessing: Cleans and tokenizes text, removing unwanted characters and limiting token count.
+* Summarization: Generates structured summaries across predefined categories using a Generative AI model.
+* API Endpoint: Provides a POST endpoint to accept JSON payloads for transcript summarization.
+* Caching: Implements caching for improved performance on summary retrieval.
 
-Prerequisites
-Python 3.7 or higher
-Google Generative AI API Access: Ensure you have a valid API key.
-Replit Account (Optional): For deploying and testing the application on Replit.
-Installation
-Clone the Repository:
+main.py file contains all the endpoints while utils.py contains all the functions.
 
-git clone https://github.com/Wiz-2/QuizAI.git
+## Prerequisites
+* Python 3.7 or higher
+* Google Generative AI API Access: Ensure you have a valid API key.
+* Replit Account (Optional): For deploying and testing the application on Replit.
 
-Create a Virtual Environment:
+### Installation
+Clone the Repository: git clone https://github.com/Wiz-2/QuizAI.git
 
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+### Create a Virtual Environment:
 
-# Install Dependencies:
+* python3 -m venv venv
+* source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-pip install -r requirements.txt
-requirements.txt Example:
+### Install Dependencies:
 
-Flask
-PyMuPDF
-transformers
-google-generativeai
+* pip install -r requirements.txt
 
-Set Environment Variables:
+#### Set Environment Variables:
 
-API_KEY: Your Google Generative AI API key.
+* API_KEY: Your Google Generative AI API key.
 
-On Replit:
-
-Click on the (Secrets) icon.
-
+* On Replit: Click on the (Secrets) icon.
 Add the following keys:
 API_KEY:	your_google_api_key
 
-Locally:
+* Locally:
 Create a .env file in the project root:
 API_KEY=your_google_api_key
 Then, load them in your application.
@@ -60,8 +52,8 @@ Verify that your API_KEY has the necessary permissions to access Google's Genera
 
 # Running the Application
 Activate the Virtual Environment:
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Run the Flask App: python main.py
+*source venv/bin/activate  # On Windows: venv\Scripts\activate
+* Run the Flask App: python main.py
 
 # API Endpoints
 1. GET '/'
@@ -118,7 +110,7 @@ Errors:
 
 4. POST '/earnings_transcript_summary'
 Description: Accepts a JSON payload containing company_name and transcript_text, generates summaries, and returns them as JSON.
-You can use the below URL with either curl or POSTMAN to access the resource.
+You can use the below URL with either curl or POSTMAN to access the resource with proper body.
 Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/earnings_transcript_summary
 
 Request:
