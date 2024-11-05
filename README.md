@@ -93,7 +93,7 @@ Description: Retrieves company name and transcript text from the session, genera
 * Body: JSON object containing summaries.
 * Example Response:
 {
-    "company_name": "Paytm",
+    "company_name": "Name_of_the_company",
     "environmental_risks": "The text does not contain any information on environmental issues, sustainability, or ESG concerns.",
     "expansion_plans": "Paytm is focused on increasing the monetization of its soundboxes through increased subscription revenues and reactivation efforts. The company is also looking to expand its financial services offerings, with secured loan products expected to contribute meaningfully in the coming quarters. The company is awaiting regulatory approvals to expand its UPI customer base and is committed to investing in its payments business, both for consumer and merchant segments.",
     "financial_performance": "Paytm reported strong financial results for Q2FY25, exceeding previous profitability guidance. The company achieved a significant reduction in cost base, particularly employee costs, leading to a contribution margin of near 55% without UPI incentives. The DLG model, implemented for merchant loans, has not impacted overall profit margins, as the upfront DLG cost is offset by higher collection revenue over the life of the loan. The company is expecting this cost structure to remain stable, and further improvements are anticipated in operating costs.",
@@ -112,7 +112,7 @@ Access URL: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.r
 * URL: /earnings_transcript_summary
 * Headers:Content-Type: application/json
 * Body:{
-  "company_name": "Paytn",
+  "company_name": "Name_of_the_company",
   "transcript_text": "Your transcript text here..."}
 
 ### Response:
