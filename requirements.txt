@@ -1,4 +1,6 @@
 Flask
+Flask-Caching
+python-dotenv
 PyMuPDF
 transformers
 google-generativeai
