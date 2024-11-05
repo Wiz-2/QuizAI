@@ -29,7 +29,7 @@ Create a Virtual Environment:
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-#Install Dependencies:
+# Install Dependencies:
 
 pip install -r requirements.txt
 requirements.txt Example:
@@ -58,12 +58,12 @@ Then, load them in your application.
 Ensure API Key Validity:
 Verify that your API_KEY has the necessary permissions to access Google's Generative AI services.
 
-## Running the Application
+# Running the Application
 Activate the Virtual Environment:
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 Run the Flask App: python main.py
 
-## API Endpoints
+# API Endpoints
 1. GET '/'
 Description: Renders an HTML form for users to upload a PDF file and enter the company name.
 Access URL on Replit: https://2391546a-3258-4555-87a3-62ef10d58ab4-00-3se0vajnovebm.worf.replit.dev/
@@ -149,7 +149,7 @@ Errors:
 400 Bad Request for invalid input formats or missing fields.
 500 Internal Server Error if summary generation fails.
 
-## Functions
+# Functions
 1. extract_text_from_pdf(pdf_file)
 Description: Extracts text from an uploaded PDF file using PyMuPDF and preprocesses it.
 
@@ -182,7 +182,7 @@ dict: A dictionary containing the company name and summaries for each category.
 Returns an error dictionary if summary generation fails.
 Usage:
 
-## Error Handling
+# Error Handling
 The API provides clear error messages with appropriate HTTP status codes:
 
 400 Bad Request:
