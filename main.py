@@ -13,7 +13,7 @@ session = {}
 logging.basicConfig(level=logging.INFO)
 
 # Configure Caching
-cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+#cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 # Configure Generative AI API
 api_key = os.environ.get("API_KEY")
