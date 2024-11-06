@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for, session
-from flask_caching import Cache
+#from flask_caching import Cache
 import os
 import logging
 from utils import preprocess_text, extract_text_from_pdf, generate_summary, tokenizer
@@ -70,7 +70,7 @@ def upload_pdf():
         return jsonify({'error': 'Invalid file format. Only PDF files are allowed.'}), 400
 
 @app.route('/summary')
-@cache.cached(timeout=300, query_string=True)
+#@cache.cached(timeout=300, query_string=True)
 def summary():
     company_name = session.get('company_name')
     transcript_text = session.get('text')
@@ -91,7 +91,7 @@ def summary():
     return jsonify(output), 200
 
 @app.route('/earnings_transcript_summary', methods=['POST'])
-@cache.cached(timeout=300, query_string=True)
+#@cache.cached(timeout=300, query_string=True)
 def earnings_transcript_summary():
     """
     Endpoint to summarize earnings transcript into defined categories.
